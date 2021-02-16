@@ -1,0 +1,19 @@
+<div class="container d-flex justify-content-center">
+    <div class="card mt-3" style="width: 18rem;">
+    <div class="card-body">
+      <h1>My tasks</h1>
+      <% @tasks.each do |task| %>
+      <div>
+        <input type="checkbox" aria-label="Checkbox for following text input" <%= "checked" if task.completed? %>> 
+        <%= link_to "#{task.title}", task_path(task)%>
+        <%= link_to task_path(task), method: :delete, data: { confirm: "destroy #{task.title}?" } do %>
+        <i class="far fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+    <div class="card-body">
+      <%= link_to "Add a new task", new_task_path, class: 'btn btn-primary'%>
+    </div>
+    <div>
+</div>
